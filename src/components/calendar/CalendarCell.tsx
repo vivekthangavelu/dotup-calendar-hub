@@ -12,30 +12,33 @@ const CalendarCell = ({ day }: CalendarCellProps) => {
   return (
     <div
       className={cn(
-        "min-h-[100px] md:min-h-[120px] p-2 border-b border-r border-border/50 transition-colors duration-150",
-        !day.isCurrentMonth && "bg-muted/30",
-        day.isToday && "bg-accent/50"
+        "min-h-[90px] md:min-h-[110px] p-1.5 md:p-2 border-b border-r border-border/40 transition-colors duration-150",
+        !day.isCurrentMonth && "bg-muted/20",
+        day.isToday && "bg-accent/40"
       )}
     >
-      <div className="flex items-center justify-between mb-1.5">
+      {/* Day Number */}
+      <div className="mb-1">
         <span
           className={cn(
-            "text-sm font-medium w-7 h-7 flex items-center justify-center rounded-full transition-colors",
+            "inline-flex items-center justify-center w-6 h-6 text-xs font-semibold rounded-full",
             day.isToday && "bg-primary text-primary-foreground",
-            !day.isCurrentMonth && "text-calendar-other-month",
-            day.isWeekend && day.isCurrentMonth && !day.isToday && "text-calendar-weekend",
+            !day.isCurrentMonth && "text-muted-foreground/50",
+            day.isWeekend && day.isCurrentMonth && !day.isToday && "text-muted-foreground",
             day.isCurrentMonth && !day.isToday && !day.isWeekend && "text-foreground"
           )}
         >
           {dayNumber}
         </span>
       </div>
-      <div className="space-y-1 overflow-hidden max-h-[60px] md:max-h-[80px]">
+
+      {/* Events */}
+      <div className="space-y-1">
         {day.events.slice(0, 2).map((event) => (
           <EventCard key={event.id} event={event} />
         ))}
         {day.events.length > 2 && (
-          <p className="text-xs text-muted-foreground pl-1">
+          <p className="text-[10px] text-muted-foreground text-center">
             +{day.events.length - 2} more
           </p>
         )}
