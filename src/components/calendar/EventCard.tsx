@@ -1,6 +1,5 @@
 import { CalendarEvent } from "@/types/calendar";
 import { getCountryFlag } from "@/data/events";
-import { ExternalLink } from "lucide-react";
 
 interface EventCardProps {
   event: CalendarEvent;
@@ -14,15 +13,14 @@ const EventCard = ({ event }: EventCardProps) => {
   return (
     <button
       onClick={handleClick}
-      className="group w-full flex items-center gap-2 px-2 py-1.5 rounded-md bg-accent hover:bg-primary/15 border border-transparent hover:border-primary/30 transition-all duration-200 cursor-pointer"
+      className="w-full text-left px-2 py-1.5 rounded-md bg-accent hover:bg-primary/15 border border-transparent hover:border-primary/30 transition-all duration-200 cursor-pointer"
     >
-      <span className="text-base flex-shrink-0" title={event.countryName}>
+      <div className="text-base leading-none mb-1" title={event.countryName}>
         {getCountryFlag(event.countryCode)}
-      </span>
-      <span className="flex-1 text-xs font-medium text-foreground truncate text-left">
+      </div>
+      <p className="text-[11px] font-medium text-foreground leading-tight line-clamp-2">
         {event.title}
-      </span>
-      <ExternalLink className="w-3 h-3 text-muted-foreground group-hover:text-primary flex-shrink-0 transition-colors" />
+      </p>
     </button>
   );
 };
