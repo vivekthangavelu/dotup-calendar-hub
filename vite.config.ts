@@ -17,5 +17,8 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "https://github.com/vivekthangavelu/dotup-calendar-hub",
+  base: "/dotup-calendar-hub/",
+  build: {
+    outDir: "docs",
+  },
 }));
